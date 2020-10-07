@@ -11,8 +11,71 @@
     Если пользователь ввёл невалидные данные - вместо ответа выводится сообщение об ошибке.*/
 
 
+let input1 = prompt(' Введите число 1');
+let input2 = prompt(' Введите число 2');
+const result = getResult(Number(input1), Number(input2));
+alert(result);
 
-const userNumber1= prompt('Введите целое и больше 0 число');
-const userNumber2= prompt('Введите целое и больше 0 число');
+//
+// const userNumber1 = prompt('Введите число');
+// const userNumber2 = prompt('Введите число');
 
 
+/*
+const s = Math.round(userNumber1 / userNumber2) * userNumber2;
+
+console.log(s)
+*/
+
+/*
+function getResult(input1, input2) {
+    if (input1 > 0 && input1 % input2 === 0) {
+        return input1;
+    } else {
+        let step = 1;
+        while (true) {
+            let plus = input1 + step;
+            let minus = input1 - step;
+            let candidates = [plus, minus];
+            for (let candidate of candidates) {
+                if (candidate > 0 && candidate % input2 === 0) {
+                    console.log(`${candidate} is ok`);
+                    return candidate;
+                } else {
+                    console.log(`${candidate} is not ok`);
+                }
+            }
+            step++;
+        }
+    }
+}*/
+
+
+function getResult(input1, input2) {
+    if (isOk(input1, input2)) {
+        return input1;
+    } else {
+        let step = 1;
+        while (true) {
+            let plus = input1 + step;
+            let minus = input1 - step;
+            let candidates = [plus, minus];
+            for (let candidate of candidates) {
+                if (isOk(candidate, input2)) {
+                    return candidate;
+                }
+            }
+            step++;
+        }
+    }
+}
+
+function isOk(input1, input2) {
+    if (input1 > 0 && input1 % input2 === 0) {
+        console.log(`${input1} is ok`);
+        return true;
+    } else {
+        console.log(`${input1} is not ok`);
+        return false;
+    }
+}
