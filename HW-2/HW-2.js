@@ -11,8 +11,8 @@
     Если пользователь ввёл невалидные данные - вместо ответа выводится сообщение об ошибке.*/
 
 
-let input1 = prompt(' Введите число 1');
-let input2 = prompt(' Введите число 2');
+const input1 = prompt(' Введите число 1');
+const input2 = prompt(' Введите число 2');
 const result = getResult(Number(parseInt(input1)), Number(parseInt(input2)));
 alert(result);
 
@@ -23,16 +23,16 @@ function getResult(input1, input2) {
         alert('Введите число!!')
     }
 
-    let integers = Math.floor(input1 / input2);
-    let candidate1 = (integers + 1) * input2;
-    let candidate2 = integers * input2;
-    let candidate1Diff = Math.abs(input1 - candidate1);
-    let candidate2Diff = Math.abs(input1 - candidate2);
+    const integers = Math.floor(input1 / input2);
+    const candidate1 = (integers + 1) * input2;
+    const candidate2 = integers * input2;
+    const candidate1Diff = Math.abs(input1 - candidate1);
+    const candidate2Diff = Math.abs(input1 - candidate2);
 
-    let candidate1Obj = {value: candidate1, diff: candidate1Diff};
-    let candidate2Obj = {value: candidate2, diff: candidate2Diff};
+    const candidate1Obj = {value: candidate1, diff: candidate1Diff};
+    const candidate2Obj = {value: candidate2, diff: candidate2Diff};
 
-    let candidates = [candidate1Obj, candidate2Obj];
+    const candidates = [candidate1Obj, candidate2Obj];
     let result = null;
     for (let candidate of candidates) {
         if (candidate.value > 0) {
