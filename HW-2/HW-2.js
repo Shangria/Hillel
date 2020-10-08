@@ -11,10 +11,12 @@
     Если пользователь ввёл невалидные данные - вместо ответа выводится сообщение об ошибке.*/
 
 
+
 const input1 = prompt(' Введите число 1');
 const input2 = prompt(' Введите число 2');
 const result = getResult(Number(parseInt(input1)), Number(parseInt(input2)));
 alert(result);
+
 
 
 function getResult(input1, input2) {
