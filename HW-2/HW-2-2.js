@@ -23,7 +23,7 @@ console.log(valuesArr);
 
 
 function enterValue() {
-    debugger;
+
     let validValue = null;
     while (validValue == null) {
         const enteredValue = prompt('введите число или оператор');
