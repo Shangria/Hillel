@@ -1,50 +1,68 @@
 // Присвойте переменные двумя способами для каждой схемы: с помощью конструкции if и с помощью тернарного оператора. Операции со строками не использовать.
 
-
-const userResponse1 = confirm('Хочешь пива?');
+let answerBeer1;
+let userResponse1 = confirm('Хочешь пива?');
 if (userResponse1) {
-    alert('Выпей пива!')
+    answerBeer1 = 'Выпей пива!'
 } else {
-    alert('Всё равно выпей пива!')
+    answerBeer1 = 'Всё равно выпей пива!'
 }
+console.log(answerBeer1);
 
 const userResponse2 = confirm('Хочешь пива?');
-userResponse2 ? alert('Выпей пива!') : alert('Всё равно выпей пива!');
+const answerBeer2 = userResponse2 ? 'Выпей пива!' : 'Всё равно выпей пива!';
 
+console.log(answerBeer2);
+
+
+
+
+let answerAge;
 const userAge1 = prompt('Введите свой возраст');
 if (userAge1 >= 18) {
     if (userAge1 > 30) {
-        alert('Здравствуйте, уважаемый!');
+        answerAge = 'Здравствуйте, уважаемый!';
     } else {
-        alert('Тебе нет 30ты, ты ничего не знаешь о жизни!');
+        answerAge = 'Тебе нет 30ты, ты ничего не знаешь о жизни!';
     }
 } else {
-    alert('Тебе надо подрасти!');
+    answerAge = 'Тебе надо подрасти!';
 }
 
+console.log(answerAge);
 
 const userAge2 = prompt('Введите свой возраст');
-alert(userAge2 >= 18 ? userAge2 > 30 ? 'Здравствуйте, уважаемый!' : 'Тебе нет 30ты, ты ничего не знаешь о жизни!' : 'Тебе надо подрасти!');
+const answerAge2 = userAge2 >= 18 ? userAge2 > 30 ? 'Здравствуйте, уважаемый!' : 'Тебе нет 30ты, ты ничего не знаешь о жизни!' : 'Тебе надо подрасти!';
 
-let userChoice = prompt('Введите название напитка');
-if (userChoice === 'чай') {
-    userChoice = confirm('C сахаром?')
-    if (userChoice) {
-        alert('Вот Ваш чай с сахаром')
+console.log(answerAge2);
+
+
+
+
+let result;
+if (confirm('чай?')) {
+    if (confirm('чай с сахаром?')) {
+        result = 'чай с сахаром';
     } else {
-        alert('Вот Ваш чай без сахара')
+        result = 'чай без сахара';
     }
-} else if (userChoice) {
-    userChoice = confirm('C сахаром?')
-    if (userChoice) {
-        alert('Вот Ваш кофе с сахаром')
+} else {
+    if (confirm('кофе с сахаром?')) {
+        result = 'кофе с сахаром';
     } else {
-        alert('Вот Ваш кофе без сахара')
+        result = 'кофе без сахара';
     }
 }
+console.log(result);
 
 
-let userChoice2 = prompt('Введите название напитка');
-alert(userChoice2 === 'чай' ? userChoice2 = confirm('C сахаром?') ? 'Вот Ваш чай с сахаром' : 'Вот Ваш чай без сахара' : userChoice2 = confirm('C сахаром?') ? 'Вот Ваш кофе с сахаром' : 'Вот Ваш кофе без сахара');
+let result1 = confirm('чай?')
+    ?
+    confirm('чай с сахаром?') ?
+        'чай с сахаром' : 'чай без сахара'
+    :
+    confirm('кофе с сахаром?') ?
+        'кофе с сахаром' : 'кофе без сахара';
+console.log(result1);
 
 
