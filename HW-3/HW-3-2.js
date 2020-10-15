@@ -35,13 +35,13 @@ function checkLogin(loginD) {
 
 // второй вариант
 
-if (userObj.login !== prompt('Введите log')) {
-    alert('login not correct');
-} else if (userObj.password === prompt('Введите пароль')) {
-    alert('hi');
-} else if (userObj.password !== prompt('Введите пароль еще раз')) {
-    alert('password not correct');
-} else {
-    alert('Hi');
-}
-
+// if (userObj.login !== prompt('Введите логин')) {
+//     alert('login not correct');
+// } else if (userObj.password === prompt('Введите пароль')) {
+//     alert('hi');
+// } else if (userObj.password !== prompt('Введите пароль еще раз')) {
+//     alert('password not correct');
+// } else {
+//     alert('Hi');
+// }
+//
