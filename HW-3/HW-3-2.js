@@ -11,15 +11,19 @@ checkLogin(userLogin);
 
 
 function checkPassword(password) {
+    debugger
     if (password === userObj.password) {
         console.log('Hi!');
     } else if (password !== userObj.password) {
-        userPassword = prompt('Введите пароль еще раз');
-        checkPassword(userPassword);
+        while (userPassword!==userObj.password) {
+            userPassword = prompt('Введите пароль еще раз');
+        }
+        console.log('Hi!');
     } else {
-        console.log(`${userPassword} неверный!!`);
+        console.log(`${userPassword} неверный!!`)
     }
 }
+
 
 function checkLogin(loginD) {
     switch (loginD) {
@@ -35,13 +39,13 @@ function checkLogin(loginD) {
 
 // второй вариант
 
-if (userObj.login !== prompt('Введите логин')) {
-    alert('login not correct');
-} else if (userObj.password === prompt('Введите пароль')) {
-    alert('hi');
-} else if (userObj.password !== prompt('Введите пароль еще раз')) {
-    alert('password not correct');
-} else {
-    alert('Hi');
-}
-
+// if (userObj.login !== prompt('Введите логин')) {
+//     alert('login not correct');
+// } else if (userObj.password === prompt('Введите пароль')) {
+//     alert('hi');
+// } else if (userObj.password !== prompt('Введите пароль еще раз')) {
+//     alert('password not correct');
+// } else {
+//     alert('Hi');
+// }
+//
