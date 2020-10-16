@@ -19,12 +19,17 @@ occupation - род деятельности пользователя (стро�
 
 const userName = 'Ivan';
 const userAge = 25;
-const userRole = 'user';
+let userRole = 'user';
 const userOccupation = 'librarian';
 
 
-console.log(userAge > 18 && userName != undefined);
+console.log(userAge > 18 && userName !== undefined);
 console.log(userRole === 'Admin' || userOccupation === 'CEO');
 console.log(userOccupation || userRole);
 console.log(userName !== undefined && userAge > 18 || userRole === 'Admin');
 
+// Операцию, которая вернёт возраст пользователя, если его роль НЕ "Admin" И имя опредено. В противном случае - false.
+console.log(userRole !== 'Admin' && userName !== undefined && userAge || userRole === 'Admin' && userName === undefined);
+
+userRole = 'Admin';
+console.log(userRole !== 'Admin' && userName !== undefined && userAge || userRole === 'Admin' && userName === undefined);
