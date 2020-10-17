@@ -1,6 +1,6 @@
 // Напишите скрипт, который запрашивает у пользователя логин и пароль и работает по следующей логике.
 
-
+let repeatPassword = true;
 const userObj = {
     login: 'Alona',
     password: '1111'
@@ -11,17 +11,38 @@ checkLogin(userLogin);
 
 
 function checkPassword(password) {
+
     debugger
     if (password === userObj.password) {
         console.log('Hi!');
     } else if (password !== userObj.password) {
-        while (userPassword!==userObj.password) {
-            userPassword = prompt('Введите пароль еще раз');
+        let confirmPassword = confirm('Хотите ввести пароль еще раз');
+        while (confirmPassword) {
+            password = prompt('Введите пароль еще раз');
+            if (password !== userObj.password) {
+                confirmPassword = confirm('Хотите ввести пароль еще раз');
+            } else {
+                confirmPassword = false;
+            }
         }
-        console.log('Hi!');
-    } else {
-        console.log(`${userPassword} неверный!!`)
+        if (password !== userObj.password) {
+            console.log('пароль неверный');
+        } else {
+            console.log('Hi!');
+        }
     }
+    // if (userPassword === userObj.password) {
+    //     console.log('Hi!');
+    //     break
+    // } else if (userPassword !== userObj.password) {
+    //     const userChange = confirm('Введите пароль еще раз');
+    //     if (userChange) {
+    //         userPassword = prompt('Введите пароль');
+    //     } else {
+    //         console.log('пароль неверный');
+    //         break
+    //     }
+    // }
 }
 
 
@@ -36,16 +57,3 @@ function checkLogin(loginD) {
     }
 }
 
-
-// второй вариант
-
-// if (userObj.login !== prompt('Введите логин')) {
-//     alert('login not correct');
-// } else if (userObj.password === prompt('Введите пароль')) {
-//     alert('hi');
-// } else if (userObj.password !== prompt('Введите пароль еще раз')) {
-//     alert('password not correct');
-// } else {
-//     alert('Hi');
-// }
-//
