@@ -12,7 +12,6 @@ checkLogin(userLogin);
 
 function checkPassword(password) {
 
-    debugger
     if (password === userObj.password) {
         console.log('Hi!');
     } else if (password !== userObj.password) {
