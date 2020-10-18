@@ -1,16 +1,20 @@
 // Напишите скрипт, который принимает порядковый номер числа из ряда и возвращает число.
 
 
-function returnFibonacciNumber(number) {
-    let fibonacciNumber1 = 1;
-    let fibonacciNumber2 = 1;
-    let currentNumber = 1;
-    for (let i = 1; i <= number; i++) {
-        currentNumber = fibonacciNumber1 + fibonacciNumber2;
-        fibonacciNumber1 = fibonacciNumber2;
-        fibonacciNumber2 = currentNumber;
-    }
-    return currentNumber
-}
+function fibonacci(number){
+    let fibonacciNumber1 = 1,
+        fibonacciNumber2 = 0,
+        currentNumber;
 
-console.log(returnFibonacciNumber(prompt('Введите число')));
+    while (number >= 0){
+        currentNumber = fibonacciNumber1;
+        fibonacciNumber1 = fibonacciNumber1 + fibonacciNumber2;
+        fibonacciNumber2 = currentNumber;
+        number--;
+        console.log(currentNumber)
+    }
+
+    return fibonacciNumber2;
+}
+console.log(fibonacci(prompt('Введите число')));
+
