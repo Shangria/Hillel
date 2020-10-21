@@ -2,6 +2,7 @@
 
 
 function fibonacci(number){
+    debugger
     let fibonacciNumber1 = 1,
         fibonacciNumber2 = 0,
         currentNumber;
