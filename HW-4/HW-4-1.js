@@ -32,7 +32,6 @@ function createUser(firstName, lastName, age) {
 
 createUser(prompt('Enter firstName'), prompt('Enter lastName'), Number(prompt('Enter age')));
 
-
 // Напишите функцию, которая принимает число и две другие функции. Если число меньше 100 - вызывается первая функция. Если больше - вторая.
 
 
