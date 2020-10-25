@@ -13,7 +13,7 @@ console.log(generateAnyNumber());
 
 function toPlayAgain() {
     const playAgain = confirm('do you want to play more?')
-    return playAgain ? guessTheNumber() : alert('bye Bye');
+    playAgain ? guessTheNumber() : alert('bye Bye');
 }
 
 function guessTheNumber(userNumber) {
