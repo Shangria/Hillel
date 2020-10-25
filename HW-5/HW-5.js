@@ -16,6 +16,7 @@ function toPlayAgain() {
 }
 
 function guessTheNumber(userNumber) {
+
     const generateNumber = generateAnyNumber();
 
     userNumber = Number(prompt('Enter number'));
@@ -25,6 +26,9 @@ function guessTheNumber(userNumber) {
             userNumber = Number(prompt('Enter number'));
         } else if (userNumber < generateNumber) {
             alert('few');
+            userNumber = Number(prompt('Enter number'));
+        } else if (isNaN(userNumber)) {
+            alert('Enter number');
             userNumber = Number(prompt('Enter number'));
         }
     }
