@@ -9,7 +9,6 @@
 Если нет - скрипт прекращает работу.*/
 
 const generateAnyNumber = () => Math.round(Math.random() * 100);
-console.log(generateAnyNumber());
 
 function toPlayAgain() {
     const playAgain = confirm('do you want to play more?')
@@ -17,7 +16,6 @@ function toPlayAgain() {
 }
 
 function guessTheNumber(userNumber) {
-    debugger
     const generateNumber = generateAnyNumber();
 
     userNumber = Number(prompt('Enter number'));
