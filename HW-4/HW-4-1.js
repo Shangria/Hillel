@@ -23,14 +23,18 @@ function createUser(firstName, lastName, age) {
 
     const userObj = {};
 
-    userObj.firstName = firstName || null;
-    userObj.lastName = lastName || null;
-    userObj.age = age || null;
+    userObj.firstName = firstName ?? null;
+    userObj.lastName = lastName ?? null;
+    userObj.age = age ?? null;
+
+    console.log(userObj)
 
     return userObj;
 }
 
 createUser(prompt('Enter firstName'), prompt('Enter lastName'), Number(prompt('Enter age')));
+createUser( 0, 0, 0)
+createUser(0, undefined, undefined)
 
 // Напишите функцию, которая принимает число и две другие функции. Если число меньше 100 - вызывается первая функция. Если больше - вторая.
 
