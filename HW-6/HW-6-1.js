@@ -9,10 +9,7 @@ const obj2 = {
 };
 
 function checkTheObject(obj) {
-    for (let key in obj) {
-        return false
-    }
-    return true
+    return Object.keys(obj).length === 0;
 }
 
 console.log(checkTheObject(obj1));
