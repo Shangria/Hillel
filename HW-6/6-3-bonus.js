@@ -12,7 +12,7 @@ const user1 = {
 };
 
 const user2 = {
-    name: 'Vasya',
+    name: 'Vanya',
     password: 2222
 };
 
@@ -22,24 +22,35 @@ arrObj.push(user2);
 const userLogin = prompt('Enter login');
 
 function checkUser(login) {
-    debugger
+    let resultLogin = null;
+    let resultPassword = null;
+    let userFound = false;
     for (let value of arrObj) {
         if (login === value.name) {
-            let userChoice = confirm('This username already exists. Enter password')
-            while (userChoice) {
-                const password = prompt('Enter password');
-                password == user1.password ? userChoice = false : userChoice = true;
+            userFound = true;
+            resultLogin = login === value.name;
+            resultPassword = value.password;
+            if (resultLogin) {
+                let userChoice = confirm('This username already exists. Enter password')
+                while (userChoice) {
+                    const password = prompt('Enter password');
+                    password == resultPassword ? userChoice = false : userChoice = true;
+                }
             }
-        } else {
-            createNewUser();
-            logIn();
+            break;
         }
-
     }
+    if (!userFound) {
+        const newUserObj = createNewUser();
+        arrObj.push(newUserObj);
 
+        logIn();
+    }
+    alert('Hello!')
 }
 
 checkUser(userLogin);
+
 
 function createNewUser() {
     let newUserObj = {};
@@ -48,9 +59,8 @@ function createNewUser() {
 
     newUserObj.name = newName;
     newUserObj.password = newPassword;
-    arrObj.push(newUserObj);
 
-    console.log(newUserObj)
+
     return newUserObj
 }
 
@@ -61,7 +71,6 @@ function logIn() {
             const userLogin = prompt('Enter login')
             logInChoice = false;
             checkUser(userLogin);
-            alert('Hello!');
         }
     } else {
         alert('by');
