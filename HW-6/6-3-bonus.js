@@ -22,6 +22,7 @@ arrObj.push(user2);
 const userLogin = prompt('Enter login');
 
 function checkUser(login) {
+    debugger
     let resultLogin = null;
     let resultPassword = null;
     let userFound = false;
@@ -34,7 +35,7 @@ function checkUser(login) {
                 let userChoice = confirm('This username already exists. Enter password')
                 while (userChoice) {
                     const password = prompt('Enter password');
-                    password == resultPassword ? userChoice = false : userChoice = true;
+                    userChoice = password == resultPassword ? userChoice = false : userChoice = true;
                 }
             }
             break;
@@ -43,7 +44,6 @@ function checkUser(login) {
     if (!userFound) {
         const newUserObj = createNewUser();
         arrObj.push(newUserObj);
-
         logIn();
     }
     alert('Hello!')
@@ -59,7 +59,6 @@ function createNewUser() {
 
     newUserObj.name = newName;
     newUserObj.password = newPassword;
-
 
     return newUserObj
 }
