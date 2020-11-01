@@ -22,7 +22,6 @@ arrObj.push(user2);
 const userLogin = prompt('Enter login');
 
 function checkUser(login) {
-    debugger
     let resultLogin = null;
     let resultPassword = null;
     let userFound = false;
