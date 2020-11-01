@@ -46,7 +46,6 @@ function checkUser(login) {
         arrObj.push(newUserObj);
         logIn();
     }
-    alert('Hello!')
 }
 
 checkUser(userLogin);
