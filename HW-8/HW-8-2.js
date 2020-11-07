@@ -23,6 +23,7 @@ const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     function sumOfNumbers(arr) {
         const sumArr = arr.reduce((sum, current) => sum + current);
+        return sumArr;
     }
 
     sumOfNumbers(arrNumbers);
@@ -49,6 +50,7 @@ const arrString = ['jingle', 'bells', 'jingle', 'bells', 'jingle', 'all', 'the',
 (function () {
     function mapToUpperCase(arr) {
         const newArrString = arr.map((elem) => elem.toUpperCase());
+        return newArrString
     }
 
     mapToUpperCase(arrString);
