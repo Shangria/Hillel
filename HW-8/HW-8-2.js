@@ -7,9 +7,9 @@ const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 
 (function () {
-    let result = null;
 
     function sumOfNumbers(arr) {
+        let result = null;
         for (let value of arr) {
             result += value;
         }
@@ -34,12 +34,13 @@ const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const arrString = ['jingle', 'bells', 'jingle', 'bells', 'jingle', 'all', 'the', 'way'];
 
 (function () {
-    const newArrString = [];
 
     function mapToUpperCase(arr) {
+        const newArrString = [];
         for (let value of arr) {
             newArrString.push(value.toUpperCase());
         }
+        return newArrString;
     }
 
     mapToUpperCase(arrString);
