@@ -40,7 +40,7 @@ const arrString = ['jingle', 'bells', 'jingle', 'bells', 'jingle', 'all', 'the',
     const newArrString = [];
 
     function mapToUpperCase(arr) {
-        for (let value of arrString) {
+        for (let value of arr) {
             newArrString.push(value.toUpperCase());
         }
     }
