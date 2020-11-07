@@ -13,7 +13,6 @@ const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         for (let value of arr) {
             result += value;
         }
-        console.log(result);
         return result;
     }
 
@@ -27,7 +26,6 @@ const arrNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             function (sum, current) {
                 return sum + current;
             });
-        console.log(sumArr);
     }
 
     sumOfNumbers(arrNumbers);
@@ -45,7 +43,6 @@ const arrString = ['jingle', 'bells', 'jingle', 'bells', 'jingle', 'all', 'the',
         for (let value of arrString) {
             newArrString.push(value.toUpperCase());
         }
-        console.log(newArrString);
     }
 
     mapToUpperCase(arrString);
@@ -57,7 +54,6 @@ const arrString = ['jingle', 'bells', 'jingle', 'bells', 'jingle', 'all', 'the',
             function (elem) {
                 return elem.toUpperCase();
             })
-        console.log(newArrString);
     }
 
     mapToUpperCase(arrString);
