@@ -1,28 +1,19 @@
 // Напишите функцию, random(min, max), которая возвращает случайное целое число от min до max.
 
 (function () {
-    const userNumber1 = checkNumber(Number(prompt('Enter number')));
-    const userNumber2 = checkNumber(Number(prompt('Enter number')));
+    const userNumber1 = Number(prompt('Enter number'));
+    const userNumber2 = Number(prompt('Enter number'));
 
+    const minimum = Math.min(userNumber1, userNumber2);
+    const maximum = Math.max(userNumber1, userNumber2);
+    console.log(`min ${minimum} max ${maximum}`);
 
     function random(min, max) {
-        const minimum = Math.min(min, max);
-        const maximum = Math.max(min, max);
-        console.log(`min ${minimum} max ${maximum}`);
-        const randomNumber = Math.floor(Math.random() * (maximum - minimum)) + minimum;
-        console.log(randomNumber);
-        return randomNumber;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    random(userNumber1, userNumber2);
+    random(minimum, maximum);
 
-
-    function checkNumber(number) {
-        while (isNaN(number)) {
-            number = Number(prompt('Enter number,stupid'));
-        }
-        return number;
-    }
 })();
 
 
