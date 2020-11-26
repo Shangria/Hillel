@@ -72,20 +72,20 @@
 // })();
 //
 //
-(function () {
-
-    function camelize(str) {
-        return str
-            .split('-')
-            .map((elem1, index) => (index === 0 ? elem1.charAt(0) : elem1.charAt(0).toUpperCase()) + elem1.substr(1))
-            .join('')
-
-    }
-
-    console.log(camelize("background-color"));
-    console.log(camelize("list-style-image"));
-    console.log(camelize("-webkit-transition"));
-})();
+// (function () {
+//
+//     function camelize(str) {
+//         return str
+//             .split('-')
+//             .map((elem1, index) => (index === 0 ? elem1.charAt(0) : elem1.charAt(0).toUpperCase()) + elem1.substr(1))
+//             .join('')
+//
+//     }
+//
+//     console.log(camelize("background-color"));
+//     console.log(camelize("list-style-image"));
+//     console.log(camelize("-webkit-transition"));
+// })();
 
 
 // (function () {
@@ -230,3 +230,23 @@
 //
 // })();
 //
+
+(function () {
+    // Напишите функцию splitPairs(string), которая принимает строку, а возвращает массив из пар символов строки. Недостающие символі заменяются на “_”:
+    // splitPairs('abcd') -> ['ab', 'cd']
+    // splitPairs('abc') -> ['ab', 'c_']
+    // splitPairs('abcdf') -> ['ab', 'cd', 'f_']
+    // splitPairs('a') -> ['a_']
+    // splitPairs('') -> []
+
+    function splitPairs(string) {
+
+    }
+
+    splitPairs('abcd');
+    splitPairs('abc');
+    splitPairs('abcdf');
+    splitPairs('a');
+    splitPairs('');
+
+})();
