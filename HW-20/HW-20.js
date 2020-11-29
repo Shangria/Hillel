@@ -7,8 +7,7 @@ const trs = tbody.querySelectorAll('tr');
 const save = tbody.innerHTML;
 const thead = table.querySelector('thead')
 const tr = thead.querySelector('tr');
-
-const trsHead=Array.from(tr.children)
+const trsHead = Array.from(tr.children)
 
 let configs = {
     0: {
@@ -44,9 +43,6 @@ Array.from(table.querySelectorAll('thead th')).forEach(function (th, index) {
     })
 });
 
-// th.addEventListener('click', addClass('arrow-down'));
-// th.addEventListener('click', changeClass('arrow-up'));
-
 function addClass(className, index) {
     trsHead[index].classList.add(className);
 }
@@ -55,12 +51,11 @@ function changeClass(className, index) {
     trsHead[index].classList = className;
 }
 
-function removeClass(className,index) {
+function removeClass(className, index) {
     trsHead[index].classList.remove(className);
 }
 
 function sortTable(columnIndex, configs) {
-    debugger
     let config = configs[columnIndex];
 
     let comparator = config.comparator;
@@ -84,7 +79,6 @@ function sortTable(columnIndex, configs) {
 
 
     let arrRow = Array.from(trs);
-
     arrRow.sort(function (tr1, tr2) {
         let td1 = tr1.children[columnIndex];
         let td2 = tr2.children[columnIndex];
