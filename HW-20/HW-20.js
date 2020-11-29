@@ -56,10 +56,10 @@ function removeClass(className, index) {
 }
 
 function sortTable(columnIndex, configs) {
-    let config = configs[columnIndex];
+    const config = configs[columnIndex];
 
-    let comparator = config.comparator;
-    let dir = config.sortDir;
+    const comparator = config.comparator;
+    const dir = config.sortDir;
 
     if (dir === 'asc') {
         config.sortDir = 'desc';
@@ -78,10 +78,10 @@ function sortTable(columnIndex, configs) {
     }
 
 
-    let arrRow = Array.from(trs);
+    const arrRow = Array.from(trs);
     arrRow.sort(function (tr1, tr2) {
-        let td1 = tr1.children[columnIndex];
-        let td2 = tr2.children[columnIndex];
+        const td1 = tr1.children[columnIndex];
+        const td2 = tr2.children[columnIndex];
         let compareResult = comparator(td1.innerHTML, td2.innerHTML);
         if (dir === 'desc') {
             compareResult = compareResult * -1;
