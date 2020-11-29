@@ -3,41 +3,75 @@
 
 const table = document.getElementById('table');
 const tbody = table.querySelector('tbody');
-let trs = tbody.querySelectorAll('tr');
+const trs = tbody.querySelectorAll('tr');
+const save = tbody.innerHTML;
+const th = table.querySelector('th')
 
-let tds = tbody.querySelectorAll('td');
-let arrTd = Array.from(tds);
-let arrColumn = [];
-let numberColumn = null;
-let td = null;
-let f;
-debugger;
 
-debugger;
+let configs = {
+    0: {
+        comparator: compareNumbers,
+        sortDir: 'asc',
+        currentState: 'unsorted',
+    },
+    1: {
+        comparator: compareStrings,
+        sortDir: 'asc',
+        currentState: 'unsorted',
+    },
+    2: {
+        comparator: compareNumbers,
+        sortDir: 'asc',
+        currentState: 'unsorted',
+    },
+    3: {
+        comparator: compareNumbers,
+        sortDir: 'asc',
+        currentState: 'unsorted',
+    },
+    4: {
+        comparator: compareNumbers,
+        sortDir: 'asc',
+        currentState: 'unsorted',
+    },
+}
+
 Array.from(table.querySelectorAll('thead th')).forEach(function (th, index) {
     th.addEventListener('click', function () {
-        sortTable(index);
+        sortTable(index, configs);
     })
 });
 
 
-function sortTable(columnIndex) {
-    let arrRow = Array.from(trs);
+function sortTable(columnIndex, configs) {
+    let config = configs[columnIndex];
 
-    let comparator;
-    switch (columnIndex) {
-        case 1:
-            comparator = compareStrings;
-            break;
-        default:
-            comparator = compareNumbers;
+    let comparator = config.comparator;
+    let dir = config.sortDir;
+
+    if (dir === 'asc') {
+        config.sortDir = 'desc';
+    } else if (dir === 'desc') {
+        config.sortDir = config.currentState;
+    } else if (dir === 'unsorted') {
+        tbody.innerHTML = save;
+        config.sortDir = 'asc';
+        return;
+    } else {
+        config.sortDir = 'asc';
     }
 
+
+    let arrRow = Array.from(trs);
 
     arrRow.sort(function (tr1, tr2) {
         let td1 = tr1.children[columnIndex];
         let td2 = tr2.children[columnIndex];
-        return comparator(td1.innerHTML, td2.innerHTML);
+        let compareResult = comparator(td1.innerHTML, td2.innerHTML);
+        if (dir === 'desc') {
+            compareResult = compareResult * -1;
+        }
+        return compareResult;
     });
     tbody.innerHTML = '';
 
@@ -48,7 +82,7 @@ function sortTable(columnIndex) {
 
 
 function compareNumbers(number1, number2) {
-    return number1 - number2;
+    return Number(number1) - Number(number2);
 }
 
 function compareStrings(str1, str2) {
@@ -62,29 +96,6 @@ function compareStrings(str1, str2) {
         return 0;
     }
 }
-
-
-// function defineColumn() {
-//     debugger
-//     for (let i = 0; i < trs.length; i++) {
-//         let tr = trs[i];
-//         let tds = tr.querySelectorAll('td');
-//
-//         for (let j = 0; j < tds.length; j++) {
-//             let td = tds[j];
-//             td.innerText = j
-//             arrColumn.push(tds[j])
-//
-//             console.log(arrColumn)
-//         }
-//
-//     }
-//
-// }
-//
-//
-// defineColumn()
-
 
 
 
