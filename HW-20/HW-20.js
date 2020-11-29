@@ -9,7 +9,7 @@ const thead = table.querySelector('thead')
 const tr = thead.querySelector('tr');
 const trsHead = Array.from(tr.children)
 
-let configs = {
+const configs = {
     0: {
         comparator: compareNumbers,
         sortDir: 'asc',
