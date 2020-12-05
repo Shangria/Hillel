@@ -3,9 +3,7 @@
 // indexes => 1, 2, 3, 4, 5, 6,  7,  8
 
 function fibonachiIterative(index) {
-    if (index === 1) {
-        return 1;
-    } else if (index === 2) {
+    if (index === 1 || index === 2) {
         return 1;
     } else {
         let currentIndex = 2;
@@ -25,8 +23,8 @@ function fibonachiRecursive(index) {
     if (index < 2) {
         return index
     } else {
-        let previous = fibonachiRecursive(index - 1);
-        let prePrevious = fibonachiRecursive(index - 2);
+        const previous = fibonachiRecursive(index - 1);
+        const prePrevious = fibonachiRecursive(index - 2);
         return previous + prePrevious
     }
 }
@@ -46,13 +44,9 @@ function factorialIterative(number) {
 }
 
 function factorialRecursive(number) {
-    if (number === 0) {
+    if (number <= 1) {
         return 1;
     } else {
-        let result = number;
-        if (number > 1) {
-            result = number * factorialRecursive(--number);
-        }
-        return result;
+        return number * factorialRecursive(--number);
     }
 }
