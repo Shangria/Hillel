@@ -2,6 +2,28 @@
 //     Бонус:
 // Функция также должна корректно работать как с обычными объектами, так и с массивами.
 
+
+function copyObject(obj) {
+
+    if (obj == null) {
+        return null;
+    } else if (obj instanceof Array) {
+        const arr = [];
+        for (let value of obj) {
+            arr.push(copyObject(value));
+        }
+        return arr;
+    } else if ('object' === typeof obj) {
+        const result = {};
+        for (let key in obj) {
+            result[key] = copyObject(obj[key]);
+        }
+        return result;
+    } else {
+        return obj;
+    }
+}
+
 const table = {
     tagName: 'table',
     attrs: {
@@ -36,27 +58,4 @@ const table = {
         }
     ]
 }
-
-function copyObject(obj) {
-    debugger
-    let tableCopy = {};
-    let arr = [];
-
-    for (let key in obj) {
-        if (obj instanceof Array) {
-            for (let value of obj) {
-                arr.push(copyObject(obj[key]));
-            }
-            return arr;
-        } else if ('object' === typeof obj[key]) {
-            tableCopy[key] = copyObject(obj[key]);
-        } else {
-            tableCopy[key] = obj[key]
-        }
-    }
-    return tableCopy;
-}
-
 const tableCopy = copyObject(table);
-
-
