@@ -4,7 +4,6 @@
     background-size: 100%;
     width: 500px;
     height: 500px;
-
 }
 
 .opacity {
@@ -30,16 +29,16 @@
 
 .add {
     width: 40px;
-    background-color: #bcdde8;
+    background-color:  #b3e0ec;
     color: #100f0f;
-    border: 1px solid white;
+    border: 1px solid  #faf7f7;
 }
 
 .del {
     width: 40px;
     background-color: #b3e0ec;
     color: #070707;
-    border: 1px solid white;
+    border: 1px solid #faf7f7;
 }
 
 .box-list {
@@ -53,12 +52,13 @@
 }
 
 li {
-    border: #dadfe2 1px solid;
-    border-radius: 2px;
+    border: #c5e0ee 1px solid;
+    border-radius: 5px;
     margin: 0 10px 10px;
     padding: 5px;
 }
 
 .add-background {
-    background-color: #d8f2f3;
+    opacity: 0.7;
+    background-color: #e3f2f3;
 }
