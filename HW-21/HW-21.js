@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     buttonAdd.addEventListener('click', function (event) {
         event.preventDefault();
         const li = document.createElement('li');
-        li.classList.add('border');
         li.innerText = inputText.value;
         list.append(li);
         inputText.value = '';
