@@ -20,6 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     buttonDel.addEventListener('click', function (event) {
         event.preventDefault();
-        document.querySelectorAll(".add-background").forEach(e => e.parentNode.removeChild(e));
+        form.querySelectorAll(".add-background").forEach(e => e.remove());
     });
 });
