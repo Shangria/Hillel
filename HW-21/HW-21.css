@@ -9,7 +9,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #c4bfbf;
+    border: #908993 1px solid;
+    background-color: #929193;
 }
 
 .user-text {
@@ -17,26 +18,26 @@
 }
 
 .add {
-    background-color: #eff2f6;
-    color: #1d0106;
+    background-color: #8eec84;
+    color: #100f0f;
 }
 
 .del {
-    background-color: #f6f1f8;
-    color: #020626;
+    background-color: #7aea7a;
+    color: #070707;
 }
 
 .box-list {
-    background-color: #d5d0d0;
+    background-color: #b5ec9f;
 }
 
 li {
-    border: #908993 1px solid;
+    border: #90e382 1px solid;
     border-radius: 2px;
     margin: 0 10px 10px;
     padding: 5px;
 }
 
 .add-background {
-    background-color: #c8a8e8;
+    background-color: #cee7c1;
 }
