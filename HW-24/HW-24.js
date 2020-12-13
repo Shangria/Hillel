@@ -9,8 +9,6 @@ function createRangeFilter(min, max) {
 
 (function () {
 
-
-
     const arr = [1, 2, 3, 4, 5, 6]
     const result = arr.filter(createRangeFilter(2, 4));
     console.log(result);
@@ -42,21 +40,6 @@ function createKeyBy(propName) {
         {hre: 'jop'},
     ]
 
-
-    arr1
-        .reduce(function (accumulator, current) {
-            Object.keys(current).forEach(function (key) {
-                if (!accumulator.includes(key)) {
-                    accumulator.push(key);
-                }
-            })
-            return accumulator;
-        }, [])
-        .forEach(function (key) {
-            console.log(`create by ${key}:`);
-            console.log(createKeyBy(key)(arr1));
-        });
-
     const createByNumber = createKeyBy('number');
     console.log(createByNumber(arr1));
 
@@ -74,8 +57,8 @@ function createCalcPercent(percent) {
 
 (function () {
     window.addEventListener('load', function () {
-        debugger
-        let form = document.createElement('form');
+
+        const form = document.createElement('form');
         form.setAttribute('autocomplete', 'off')
         form.innerHTML = `
                 <h5>Calculate percent</h5>
@@ -87,17 +70,17 @@ function createCalcPercent(percent) {
                 <div data-role="result"></div>`;
         document.body.appendChild(form);
 
-        let inputValue = form.querySelector('input[name="value"]');
-        let inputPercent = form.querySelector('input[name="percent"]');
-        let resultContainer = form.querySelector('[data-role="result"]');
+        const inputValue = form.querySelector('input[name="value"]');
+        const inputPercent = form.querySelector('input[name="percent"]');
+        const resultContainer = form.querySelector('[data-role="result"]');
 
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             resultContainer.innerHTML = null;
 
-            let percent = Number(inputPercent.value);
-            let value = Number(inputValue.value);
+            const percent = Number(inputPercent.value);
+            const value = Number(inputValue.value);
 
             resultContainer.innerHTML = createCalcPercent(percent)(value);
         });

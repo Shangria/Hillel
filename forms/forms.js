@@ -23,3 +23,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 
 });
+
+function log(message) {
+    console.log(message);
+
+    if (typeof message == 'object') {
+        message = JSON.stringify(message);
+    }
+
+    window.addEventListener('load', function () {
+        let div = document.createElement('div');
+        div.innerHTML = message;
+        document.body.appendChild(div);
+    });
+}
