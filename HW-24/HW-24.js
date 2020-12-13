@@ -37,7 +37,6 @@ function createKeyBy(propName) {
         {language: 'RU', number: '1', name: 'Masha'},
         {language: 'RU', number: '5', name: 'Sasha'},
         {language: 'ENG', number: '4', name: 'Dasha'},
-        {hre: 'jop'},
     ]
 
     const createByNumber = createKeyBy('number');
