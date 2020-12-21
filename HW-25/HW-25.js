@@ -13,7 +13,7 @@
     const sortNative = Array.prototype.sort;
     Array.prototype.sort = function () {
         const result = [...this];
-        sortNative.apply(result);
+        sortNative.apply(result, arguments);
         return result;
     }
 })();
