@@ -48,7 +48,7 @@ class Rabbit extends Animal {
     }
 }
 
-const rabbit = new Rabbit('white');
+const rabbit = new Rabbit('white',4);
 
 (function () {
     console.log(rabbit instanceof Animal);
@@ -81,7 +81,7 @@ class Snake extends Animal {
     }
 }
 
-const snake = new Snake('viper');
+const snake = new Snake('viper',0);
 (function () {
     console.log(snake instanceof Animal);
     console.log(snake);
