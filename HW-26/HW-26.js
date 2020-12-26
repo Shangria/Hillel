@@ -55,7 +55,7 @@ const rabbit = new Rabbit('white');
     console.log(rabbit);
     console.log(rabbit.jump(4));
     console.log(rabbit.eat(vegetable.name));
-// console.log(rabbit.eat('tssf'));
+// console.log(rabbit.eat('tomat'));
 })();
 
 
