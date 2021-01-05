@@ -68,7 +68,7 @@ class Snake extends Animal {
 
     eat(food) {
         if (food instanceof Rabbit) {
-            return super.eat(rabbit);
+            return super.eat(food);
         } else {
             throw new Error('Error');
         }
