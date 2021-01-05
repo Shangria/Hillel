@@ -7,8 +7,6 @@ class Vegetable {
     }
 }
 
-const vegetable = new Vegetable('carrot');
-
 // Создайте класс Animal(legs), реализующий метод eat(food). У каждого животного должен быть массив объектов stomach, в который попадает еда food
 
 class Animal {
@@ -23,7 +21,6 @@ class Animal {
     }
 }
 
-const animal = new Animal();
 
 // Создайте класс Rabbit(breed), наследующий от Animal и реализующий метод jump(). При этом, метод eat должен выбрасывать ошибку, если кролик пытается съесть что-то, кроме овощей.
 
@@ -40,22 +37,20 @@ class Rabbit extends Animal {
     }
 
     eat(food) {
-        if (food !== vegetable.name) {
-            throw new Error('Error');
-        } else {
+        if (food instanceof Vegetable) {
             return super.eat(food);
+        } else {
+            throw new Error('Error');
         }
     }
 }
 
-const rabbit = new Rabbit('white',4);
-
 (function () {
+    const rabbit = new Rabbit('rabbit', 4);
     console.log(rabbit instanceof Animal);
     console.log(rabbit);
     console.log(rabbit.jump(4));
-    console.log(rabbit.eat(vegetable.name));
-// console.log(rabbit.eat('tomat'));
+    console.log(rabbit.eat(new Vegetable('tomato')));
 })();
 
 
@@ -73,21 +68,19 @@ class Snake extends Animal {
     }
 
     eat(food) {
-        if (food !== 'rabbit') {
-            throw new Error('Error');
+        if (food instanceof Rabbit) {
+            return super.eat(rabbit);
         } else {
-            return super.eat(food);
+            throw new Error('Error');
         }
     }
 }
 
-const snake = new Snake('viper',0);
 (function () {
-    console.log(snake instanceof Animal);
+    const snake = new Snake('viper', 0);
     console.log(snake);
     console.log(snake.crawl());
-    console.log(snake.eat('rabbit'));
-// console.log(snake.eat('tomato'));
+    console.log(snake.eat(new Rabbit('rabbit', 4)));
 })()
 
 
@@ -112,7 +105,7 @@ class Human extends Animal {
     }
 
     eat(food) {
-        if (food === 'human') {
+        if (food instanceof Human) {
             throw new Error('Error');
         } else {
             return super.eat(food);
@@ -120,13 +113,11 @@ class Human extends Animal {
     }
 }
 
-const human = new Human('Vasya', 'Petrov', 2);
 
 (function () {
+    const human = new Human('Vasya', 'Petrov', 2);
     console.log(human);
     console.log(human.walk());
     console.log(human.greet());
-    console.log(human.eat('rabbit'));
-    console.log(human instanceof Animal);
-// console.log(human.eat('human'));
+    console.log(human.eat(new Rabbit('rabbit')));
 })();
