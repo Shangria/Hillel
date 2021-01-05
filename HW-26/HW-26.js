@@ -47,7 +47,6 @@ class Rabbit extends Animal {
 
 (function () {
     const rabbit = new Rabbit('rabbit', 4);
-    console.log(rabbit instanceof Animal);
     console.log(rabbit);
     console.log(rabbit.jump(4));
     console.log(rabbit.eat(new Vegetable('tomato')));
