@@ -24,7 +24,7 @@
 
 
     async function getRandom(max, probability) {
-        return sendRequest(`https://async-demo.herokuapp.com/unstable?maxRandom=${max}&prob=${probability}`)
+        return sendRequest(`https://async-demo.herokuapp.com/stable?maxRandom=${max}&prob=${probability}`)
     }
 
     async function createPerson(person, probability) {
@@ -38,8 +38,7 @@
     async function extendPerson(id, person, probability) {
         const json = await sendRequest(`https://async-demo.herokuapp.com/objects/${id}?prob=${probability}`, {
             method: 'PATCH',
-            body: JSON.stringify(person),
-            headers: {"Access-Control-Allow-Methods": "GET,HEAD,POST,PATCH"}
+            body: JSON.stringify(person)
         });
         return JSON.parse(json);
     }
@@ -71,14 +70,15 @@
 
         try {
             let result = await createPerson(person, 20);
-            person.id = result.id;
+            Object.assign(person, result);
         } catch (e) {
             console.error(`Error on creating person: ${e}`);
             return;
         }
 
         try {
-            await extendPerson(person.id, {age: 33}, 20);
+            let result = await extendPerson(person.id, {age: 33}, 20);
+            Object.assign(person, result);
         } catch (e) {
             console.error(`Error on extending person: ${e}`);
             return;
@@ -92,13 +92,10 @@
     })();
 
 
-    {   // 28.2
-
-
-    }
-
+    // 28.3
     await (async function () {
         console.info('start 28.3')
+        const probability = 5;
         let persons = [
             {firstName: 'Vasya', lastName: 'Ivanov'},
             {firstName: 'Sobak', lastName: 'Kot'},
@@ -107,8 +104,8 @@
 
         for (const person of persons) {
             try {
-                let result = await createPerson(person, 5);
-                person.id = result.id;
+                let result = await createPerson(person, probability);
+                Object.assign(person, result);
             } catch (e) {
                 console.error(`Error on creating person ${JSON.stringify(person)}: ${e}`);
                 return;
@@ -118,7 +115,7 @@
         for (const person of persons) {
             let random;
             try {
-                random = await getRandom(3, 5);
+                random = await getRandom(3, probability);
                 random = Number(random);
             } catch (e) {
                 console.error(`Error on getting random: ${e}`);
@@ -126,7 +123,8 @@
             }
 
             try {
-                await extendPerson(person.id, {age: random}, 5);
+                let result = await extendPerson(person.id, {age: random}, probability);
+                Object.assign(person, result);
             } catch (e) {
                 console.error(`Error on extending person ${JSON.stringify(person)}: ${e}`);
                 return;
@@ -135,7 +133,7 @@
 
         let random;
         try {
-            random = await getRandom(3, 5);
+            random = await getRandom(3, probability);
             random = Number(random);
         } catch (e) {
             console.error(`Error on getting random: ${e}`);
@@ -145,7 +143,7 @@
         for (let i = 0; i < persons.length; i++) {
             if (i !== random) {
                 try {
-                    await deletePerson(persons[i], 20);
+                    await deletePerson(persons[i].id, probability);
                 } catch (e) {
                     console.error(`Error on deleting person ${JSON.stringify(persons[i])}: ${e}`);
                     return;
