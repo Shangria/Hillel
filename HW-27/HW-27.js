@@ -1,6 +1,6 @@
 (function () {
 
-    // hw 27.1
+
     (function () {
         let request = new XMLHttpRequest();
         request.open('get', 'http://async-demo.herokuapp.com/unstable?maxRandom=20&prob=50');
