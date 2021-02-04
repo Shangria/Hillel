@@ -1,6 +1,7 @@
+// hw 27
 (function () {
 
-
+    // hw 27.1
     (function () {
         let request = new XMLHttpRequest();
         request.open('get', 'http://async-demo.herokuapp.com/unstable?maxRandom=20&prob=50');
@@ -16,7 +17,7 @@
         request.send();
     })();
 
-
+    // hw 27.2
     (function () {
 
         function sendJsonRequest(url, httpMethod, payload, onSuccess, onError) {
@@ -78,13 +79,14 @@
         let person = {firstName: 'Vasya', lastName: 'Ivanov'};
 
         createPerson(person, (response1) => {
-            person.id = Number(response1);
+            Object.assign(person, response1);
             console.log(`Person created: ${JSON.stringify(person)}`);
 
             extendPerson(person.id, {age: 255}, (response2) => {
+                Object.assign(person, response2);
                 console.log(`Person extended: ${JSON.stringify(person)}`);
 
-                deletePerson(person.id, null, (response3) => {
+                deletePerson(person.id, (response3) => {
                     console.log(`Person deleted: ${JSON.stringify(person)}`);
                 }, (error) => {
                     console.error(`Error on deleting person: ${error}`);
