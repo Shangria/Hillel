@@ -47,7 +47,6 @@
             if (payload) {
                 let json = JSON.stringify(payload);
                 request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-                request.setRequestHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
                 request.send(json);
             } else {
                 request.send();
