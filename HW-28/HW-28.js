@@ -43,11 +43,10 @@
         return JSON.parse(json);
     }
 
-    async function deletePerson(id, probability) {
-        const json = await sendRequest(`https://async-demo.herokuapp.com/objects/${id}?prob=${probability}`, {
+    function deletePerson(id, probability) {
+        return sendRequest(`https://async-demo.herokuapp.com/objects/${id}?prob=${probability}`, {
             method: 'DELETE'
         });
-        return JSON.parse(json);
     }
 
     // 28.1
@@ -77,8 +76,9 @@
         }
 
         try {
-            let result = await extendPerson(person.id, {age: 33}, 20);
-            Object.assign(person, result);
+            let patch = {age: 33};
+            await extendPerson(person.id, patch, 20);
+            Object.assign(person, patch);
         } catch (e) {
             console.error(`Error on extending person: ${e}`);
             return;
@@ -102,34 +102,39 @@
             {firstName: 'Yabloko', lastName: 'Grusha'},
         ];
 
-        for (const person of persons) {
-            try {
-                let result = await createPerson(person, probability);
-                Object.assign(person, result);
-            } catch (e) {
-                console.error(`Error on creating person ${JSON.stringify(person)}: ${e}`);
-                return;
-            }
-        }
+        await Promise.all(
+            persons.map(async (person) => {
+                try {
+                    let result = await createPerson(person, probability);
+                    Object.assign(person, result);
+                } catch (e) {
+                    console.error(`Error on creating person ${JSON.stringify(person)}: ${e}`);
+                    throw e;
+                }
+            })
+        );
 
-        for (const person of persons) {
-            let random;
-            try {
-                random = await getRandom(3, probability);
-                random = Number(random);
-            } catch (e) {
-                console.error(`Error on getting random: ${e}`);
-                return;
-            }
+        await Promise.all(
+            persons.map(async (person) => {
+                let random;
+                try {
+                    random = await getRandom(3, probability);
+                    random = Number(random);
+                } catch (e) {
+                    console.error(`Error on getting random: ${e}`);
+                    throw e;
+                }
 
-            try {
-                let result = await extendPerson(person.id, {age: random}, probability);
-                Object.assign(person, result);
-            } catch (e) {
-                console.error(`Error on extending person ${JSON.stringify(person)}: ${e}`);
-                return;
-            }
-        }
+                try {
+                    let patch = {age: random};
+                    await extendPerson(person.id, patch, probability);
+                    Object.assign(person, patch);
+                } catch (e) {
+                    console.error(`Error on extending person ${JSON.stringify(person)}: ${e}`);
+                    throw e;
+                }
+            })
+        );
 
         let random;
         try {
@@ -140,16 +145,20 @@
             return;
         }
 
-        for (let i = 0; i < persons.length; i++) {
-            if (i !== random) {
-                try {
-                    await deletePerson(persons[i].id, probability);
-                } catch (e) {
-                    console.error(`Error on deleting person ${JSON.stringify(persons[i])}: ${e}`);
-                    return;
+        await Promise.all(
+            [...persons].map(async (person, index) => {
+                if (index !== random) {
+                    try {
+                        await deletePerson(person.id, probability);
+                        delete persons[index];
+                    } catch (e) {
+                        console.error(`Error on deleting person ${JSON.stringify(persons[index])}: ${e}`);
+                        throw e;
+                    }
                 }
-            }
-        }
+            })
+        );
+
     })();
 
 })();
